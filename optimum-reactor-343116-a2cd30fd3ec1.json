@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "optimum-reactor-343116",
+  "private_key_id": "a2cd30fd3ec1a6e00750741a8f65bc476788f875",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCk5+x1QcKF1x0m\nClTe/yXHTFOsub+Tl5Z2T4UZitmSHNT3+OEqoPhjuZ9ysmtRcaLfSwOOvMLHMeMu\niHDLF7lmdyroUbK8pa39a5nrJds1PFO2d+gYD2NsG16IkTvqpFp4rEWq/zS5UyzJ\nSBhvwaDL4r5DRD2hv9gVGsciR3q7v1YyvT0LtauIaFb1qqsAWSqS9JgBmFWYguP/\n/7t5XunSGA02nNwVk7rArTMAc2tg8Fq99nUgIa00uS4yswLNILsFonwvNJCb7Huv\nM/lX/EaWsVwg6YQw9UciCZN3ig8DHuqZWxMak50lxHMBOFpifjXId2kiQa/cIz4v\ncVZDsDExAgMBAAECggEAIuLfrsS9KsRh6cDIyK5QpzN6BjH7mfU5Qwk6nrc1pQgN\nc/JGbFbGhY5o8YJWWtIAA14iwAkl6a8foSIDPqvjsI4oWSKjfe5M+y5OzyTglYgQ\nK6t9Qc3LmjzGCH01IEQp0ZqcWHsKA+TZNjHW3Zmoc0miN6fRpAzqYTibhSB7Egmm\n0QJnKANEY4sORnZcVJpDMKMuCYMjH5Q5jFEiCjHQTF/86n3ij7TQk8mggLd8irAP\n+/RyMBuxb/zHt0RjeVVoLbr4x4BavsrmTbkz/CzYUcnKUTK/9BF+nYmW6fn2ioe/\nBS73WzbuCSec2gI+WKAB3frN0qz1DWahqjUlFq8SGwKBgQDaeJuGZ+xy87/WGASL\nw2+mYN3ogdQAzAFC6zuD9c5WpVE2lmuarTOkGI7F85SkH4ps9pZwoH0Q2qKpsMU3\nOzmmfAzS0lj5zG3o3CPG0biTZi3oVC61uQCPtEpNYRslob24krvLrdjE7DMH3b4s\n819uRNmLHFyIAFEWIMZ/v0YxiwKBgQDBO8HTGrBoGjZgzVCLEiM7FBFfsTraFI6u\nZKif2a9+Y8SIwJ6eimOcJxE1lgYvleFVJsztZgtWM8Uv8ubK8CNWsWQhbZo/iSRt\nrlZgdPwhx5sYFk8n+BAkW+XDhkPqunl07HxtOi/8z4FyWMEtBWLsJdUr/6iBTY7x\n26KbSVpHswKBgQDXSZ7JNkP1i2nxyj1AlVjC9hX3d2i5WE+t6Cz//wxUqhh72IM1\nK5UGEgUv4LcLfOFmOyFI334fS7Sbz8yofr5y5y+j2RFBKEju/XBsDmL7LefzWHGn\nNiXtdtb5pcWgseBJsJ9LOYexlqk7CTLNDQ9vlH1j7pDonJdLXQT/AjhjvQKBgEUk\nNrRsxlZZmr+Ed59rfAO1qInPBrnlxTANgHDCGZNl63rrQVaFOiMzr2q3Jbt9K8Wm\nPolri/7qQ1Jm3cIbrulkS+nSJ/E4BzrfuLSG53jGzW4O/X/VuSDpaQtPTZn941u9\nCsCio20Yar8ZlvWfCchpuR8nOYoa0F0mM8bQtmcVAoGAbfpkGH4wXjN6xnmJK008\n8CWus/iiQb+LSFioBMwpHjkKc7VP03Dw4MDspErLyVRL37w2yKsS5TrACZWkH6Cb\nEqaj3ztL8yetHJ3s16sk6WlUcwnFU8RH61FSjFsV/XPL2KYAhKDYN2+Dle+w/5M+\n08EfTqqS5n4YBPvZmC3KI+o=\n-----END PRIVATE KEY-----\n",
+  "client_email": "service-account@optimum-reactor-343116.iam.gserviceaccount.com",
+  "client_id": "100640897926854219280",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/service-account%40optimum-reactor-343116.iam.gserviceaccount.com"
+}
