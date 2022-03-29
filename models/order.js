@@ -1,17 +1,15 @@
 var mongoose = require('mongoose')
 var orderSchema = mongoose.Schema({
-    user : {
-       name : String,
-       email:String ,
-        id : {
-            type: Schema.Types.ObjectId,
-            ref: 'user'
-        }
-    } ,
+    userId :String,
+    userName:String,
+    userEmail:String,
     food :[ {
-        foodname : String,
-        id : {
-            type: Schema.Types.ObjectId,
+
+        foodname  : String,
+        foodqty:Number,
+        foodprice:Number,     
+           id : {
+            type:mongoose.Schema.Types.ObjectId,
             ref: 'food'
         }
     } ],
@@ -22,7 +20,7 @@ var orderSchema = mongoose.Schema({
     },
     status: {
         type: String,
-        default: "placed"
+        default: "unplaced"
     },
     paymentstatus: {
         type: String,

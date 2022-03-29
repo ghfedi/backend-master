@@ -1,9 +1,13 @@
-require('dotenv').config()
-
 var User = require('../models/user')
 var Food = require('../models/food')
 var Feedback= require('../models/feedback')
+var Order= require('../models/order')
 const fileUploadmiddleware = require('../middelware/fileUpload')
+
+
+
+//var DeleveryMan=require('../models/deliveryman')
+var bcrypt = require('bcrypt')
 
 exports.getallUser = (req, res) => {
    
@@ -48,7 +52,7 @@ exports.unblock = (req, res) => {
 
 exports.getalldeliveryMan = (req, res) => {
    
-    User.find({ role: "delivery" } ,(err, usr) => {
+    User.find({ role: "deliveryMan" } ,(err, usr) => {
         if (err) {
             console.log("error in get all user by admin");
             return res.json({ errormsg: 'Somthing went wrong' });
@@ -85,61 +89,59 @@ exports.deleteFeedback = (req, res) => {
 }*/
 //manque photo
 exports.addFood = async (req, res) => {
-   //var file = req.file
-    let avail;
-    let qty;
-    let limit;
-    
-
-        if (req.body.foodqty <= 0) {
-            avail = false;
-            qty = 0;
-            limit = false;
-        }
-        else {
-            avail = true;
-            qty = req.body.foodqty;
-            limit = false;
-        }
-        if (req.body.foodqty == -1) {
-            avail = true;
-            qty = -1;
-            limit = true;
-        }
-        // **********************
-        try {
-            const image = req.file
-            const imageUrl = await fileUploadmiddleware.uploadImage(image)
-            var food = new Food({
-                foodname: req.body.foodname,
-                foodqty: qty,
-                foodprice: req.body.foodprice,
-                 //foodimage: file.filename,
-               foodimage: imageUrl,
-                foodavail: avail,
-                unlimited: limit
-            })
-            try {
-                doc = food.save();
-                console.log("food added by admin");
-                const io = req.app.get('io');
-                io.emit("foodcrudbyadmin", " food crud operation done by admin!");
-                return res.json({ msg: 'Food added' });
-            }
-            catch (err) {
-                console.log("some error while adding food by admin")
-                return res.json({ errormsg: 'Somthing went wrong' });
-            }
-        }
-        catch (err) {
-            console.log("some error while adding food by admin2")
-            return res.json({ errormsg: 'Somthing went wrong' });
-        }
-        // **********************
-
-    }
-   
-
+    //var file = req.file
+     let avail;
+     let qty;
+     let limit;
+     
+ 
+         if (req.body.foodqty <= 0) {
+             avail = false;
+             qty = 0;
+             limit = false;
+         }
+         else {
+             avail = true;
+             qty = req.body.foodqty;
+             limit = false;
+         }
+         if (req.body.foodqty == -1) {
+             avail = true;
+             qty = -1;
+             limit = true;
+         }
+         // **********************
+         try {
+             const image = req.file
+             const imageUrl = await fileUploadmiddleware.uploadImage(image)
+             var food = new Food({
+                 foodname: req.body.foodname,
+                 foodqty: qty,
+                 foodprice: req.body.foodprice,
+                  //foodimage: file.filename,
+                foodimage: imageUrl,
+                 foodavail: avail,
+                 unlimited: limit
+             })
+             try {
+                 doc = food.save();
+                 console.log("food added by admin");
+                 const io = req.app.get('io');
+                 io.emit("foodcrudbyadmin", " food crud operation done by admin!");
+                 return res.json({ msg: 'Food added' });
+             }
+             catch (err) {
+                 console.log("some error while adding food by admin")
+                 return res.json({ errormsg: 'Somthing went wrong' });
+             }
+         }
+         catch (err) {
+             console.log("some error while adding food by admin2")
+             return res.json({ errormsg: 'Somthing went wrong' });
+         }
+         // **********************
+ 
+     }  
 exports.getallFood = (req, res) => {
 
     Food.find({}, (err, items) => {
@@ -246,4 +248,84 @@ exports.deleteFeedback = (req, res) => {
         }
     })
     return res.json({ msg: 'successfully feedback deleted' });
+}
+exports.adddeleveryMan=(req,res)=>{
+    try  {
+       User.findOne({email:req.body.email} ,(err,user)=>
+
+    { if(user) {
+        res.status(500).json({ errormsg: 'Email exist' })
+
+    } else { 
+        bcrypt.hash(req.body.password,10).then((hashedPassword)=> {
+        var user = new User ({
+        contact  :req.body.contact,
+        name: req.body.name,
+        email:req.body.email,
+        password: hashedPassword,
+        role: 'deliveryMan'
+    })
+      
+       doc = user.save();
+       console.log("new man added by admin");
+       return res.json({ user})  
+
+
+    } ) }  }) } 
+     catch (err) {
+        console.log("some error while adding food by admin")
+        return res.json({ errormsg: 'Somthing went wrong' });
+    }
+    
+ }
+ exports.getOneuser = (req, res) => {
+    var id = req.params.id
+    User.findOne({ _id: id }, (err, user) => {
+        if (err) {
+            console.log("error in get one user by admin");
+            return res.json({ errormsg: 'Somthing went wrong' });
+        }
+        res.status(200).json({ msg: user })
+    }).select("-password").select("-role").select("-blocked").select("-_id")
+}
+
+ //see all orders 
+
+ exports.getAllOrders=(req,res)=>{
+     Order.find((err,orders)=>{
+         if(err){
+             res.send('error')
+         }
+         else{
+            orders = orders.reverse() 
+            res.json({ msg: orders });
+         }
+     })
+
+ }
+ exports.getoneOrder = (req, res) => {
+    Order.find({ userId: req.params.id }, (err, order) => {
+        if (err) {
+            console.log("error in get one order by admin");
+            return res.json({ errormsg: 'Somthing went wrong' });
+        }
+        return res.send(order);
+    })
+}
+exports.getorderofdate=(req,res)=>{
+    let totale =0
+    Order.find({orderdate :req.params.date},(err,orders)=>{
+        if(err){
+            res.send(err)
+        }
+        else{
+            for (let i = 0; i < orders.length; i++){
+
+                 totale +=orders[i].total
+            }
+            console.log(req.params.date)
+            orders = orders.reverse() 
+            res.json({orders,totale})
+        }
+    })
 }

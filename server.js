@@ -4,13 +4,11 @@ var router = express.Router()
 var bodyParser = require('body-parser')
 var cors = require('cors')
 const multer = require('multer')
-
 const adminRoutes = require('./routers/AdminRoute')
 const UserRoute=require('./routers/routeUser')
-
+const DeleveryRouter=require('./routers/DeleveryRouter')
 const authRoutes = require('./routers/authRoute')
 const PORT = process.env.PORT || 3000
-
 // image
 app.use('/backend/uploads',express.static('uploads'))
  
@@ -58,3 +56,4 @@ app.listen(PORT, () => {
 app.use('/',authRoutes)
 app.use('/',adminRoutes)
 app.use('/',UserRoute)
+app.use('/',DeleveryRouter)

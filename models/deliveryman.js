@@ -1,4 +1,4 @@
-var mongoose = require('mongoose')
+/*var mongoose = require('mongoose')
 var deliverymanSchema = mongoose.Schema({
     
     
@@ -27,7 +27,7 @@ var deliverymanSchema = mongoose.Schema({
     }
 }, { timestamp: true }
 )
-
+/*
 userSchema.statics.hashPassword = function hashPassword(password){
     return bcrypt.hashSync(password,10);
 }
@@ -35,5 +35,5 @@ userSchema.statics.hashPassword = function hashPassword(password){
 userSchema.methods.isValid = function(hashedpassword){
     return  bcrypt.compareSync(hashedpassword, this.password);
 }
-
+*/
 module.exports = mongoose.model('deliveryman',deliverymanSchema)

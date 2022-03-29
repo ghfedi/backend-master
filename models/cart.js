@@ -8,8 +8,10 @@ var cartSchema = mongoose.Schema({
     },
     food :[ {
 foodname  : String,
+foodqty:Number,
+foodprice:Number,
         id : {
-            type: Schema.Types.ObjectId,
+            type: mongoose.Schema.Types.ObjectId,
             ref: 'food'
         }
     } ],

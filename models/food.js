@@ -19,9 +19,7 @@ var foodSchema = mongoose.Schema({
     foodavail: {
         type: Boolean, default: false
     },
-    unlimited: {
-        type: Boolean, default: false
-    },
+   
     createdAt: {type: Date, default: Date.now}
 })
 module.exports = mongoose.model('food',foodSchema)
